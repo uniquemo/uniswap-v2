@@ -16,11 +16,12 @@ export const loadPools = async (providerUrl) => {
 export const usePools = () => {
   const { readOnlyChainId, readOnlyUrls } = useConfig();
   const [loading, setLoading] = useState(true);
-  const [pools, setPools] = useState({});
+  const [pools, setPools] = useState([]);
 
   useEffect(() => {
     loadPools(readOnlyUrls[readOnlyChainId])
       .then((pools) => {
+        console.log('pools => ', pools);
         setPools(pools);
         setLoading(false);
       });
